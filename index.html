@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>For You Sayangku</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Cantika ♡</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      background:linear-gradient(to bottom,#0f0f0f,#1a1a1a);
+      color:white;
+      font-family:Georgia, serif;
+      overflow:hidden;
+      height:100vh;
+    }
+
+    #start-screen{
+      position:absolute;
+      width:100%;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      z-index:10;
+    }
+
+    #start-screen h1{
+      font-size:2.2rem;
+      margin-bottom:25px;
+      text-align:center;
+      padding:20px;
+    }
+
+    button{
+      padding:14px 34px;
+      border:none;
+      border-radius:30px;
+      background:#ffd6e7;
+      color:black;
+      font-size:1rem;
+    }
+
+    .main{
+      height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .hidden{
+      display:none;
+    }
+
+    .photo{
+      width:280px;
+      max-width:85%;
+      border-radius:20px;
+      margin-bottom:30px;
+      box-shadow:0 0 30px rgba(255,255,255,0.15);
+    }
+
+    .text{
+      font-size:1.2rem;
+      line-height:2rem;
+      max-width:700px;
+      white-space:pre-line;
+    }
+
+    .heart{
+      position:absolute;
+      bottom:-20px;
+      color:#ff9ab7;
+      animation:floatUp linear forwards;
+    }
+
+    @keyframes floatUp{
+      to{
+        transform:translateY(-110vh);
+        opacity:0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="start-screen">
+  <h1>For You And Only You, Sayangku ♡</h1>
+  <button id="startBtn">Tap to Start</button>
+</div>
+
+<audio id="bgMusic" loop preload="auto">
+  <source src="https://files.catbox.moe/1daq5c.mp3" type="audio/mp3">
+</audio>
+
+<div class="main hidden" id="mainContent">
+
+  <img src="https://files.catbox.moe/cvyj6h.jpeg" class="photo">
+
+  <div class="text">
+    <span id="typing"></span>
+  </div>
+
+</div>
+
+<script>
+
+const startBtn = document.getElementById("startBtn");
+const music = document.getElementById("bgMusic");
+const main = document.getElementById("mainContent");
+
+const message = `In a world with
+
+1 Earth,
+7 Seas,
+7 Continents,
+196 Countries,
+and 8 Billion People…
+
+somehow my heart found you.
+
+and i love you alot sayangku ♡
+
+Cantika ♡`;
+
+let i = 0;
+
+startBtn.addEventListener("click", async () => {
+
+  document.getElementById("start-screen").style.display = "none";
+
+  main.classList.remove("hidden");
+
+  try{
+    music.volume = 1;
+    await music.play();
+  } catch(err){
+    console.log(err);
+  }
+
+  typeText();
+
+  setInterval(createHeart, 300);
+});
+
+function typeText(){
+
+  if(i < message.length){
+
+    document.getElementById("typing").innerHTML += message.charAt(i);
+
+    i++;
+
+    setTimeout(typeText, 55);
+  }
+}
+
+function createHeart(){
+
+  const heart = document.createElement("div");
+
+  heart.classList.add("heart");
+
+  heart.innerHTML = "♡";
+
+  heart.style.left = Math.random() * 100 + "vw";
+
+  heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+
+  heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 7000);
+}
+
+</script>
+
+</body>
+</html>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>
